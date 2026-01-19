@@ -1,23 +1,28 @@
 # docker-compose.yml
-version: '3.7'  # 使用兼容旧版本的格式
+version: '3.8'
 
 services:
   iot-monitor:
     build: .
-    container_name: iot-monitor
     ports:
-      - "8080:8080"    # Web 界面
-      - "1883:1883"    # MQTT 代理
-    volumes:
-      - ./data:/app/data          # 数据持久化
-      - ./logs:/app/logs          # 日志持久化
-      - ./config:/app/config      # 配置文件
+      - "5000:5000"
+      - "1883:1883"
     environment:
-      - TZ=Asia/Shanghai
-      - PYTHONUNBUFFERED=1
+      - WEB_HOST=0.0.0.0
+      - WEB_PORT=5000
+      - MQTT_BROKER=localhost
+      - MQTT_PORT=1883
+      - DEBUG=false
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./templates:/app/templates
+      - ./static:/app/static
     restart: unless-stopped
-    command: python main.py  # 直接指定启动命令
+    networks:
+      - iot-network
 
 networks:
-  default:
+  iot-network:
     driver: bridge
