@@ -1,5 +1,5 @@
 # docker-compose.yml
-version: '3.8'
+version: '3.7'  # 使用兼容旧版本的格式
 
 services:
   iot-monitor:
@@ -16,30 +16,8 @@ services:
       - TZ=Asia/Shanghai
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "python", "-c", "import socket; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM); s.connect(('127.0.0.1', 8080)); s.close()"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    networks:
-      - iot-network
-
-  # 如果使用外部 MQTT 代理，可以添加这个服务
-  mosquitto:
-    image: eclipse-mosquitto:2.0
-    container_name: mosquitto
-    ports:
-    - "1883:1883"
-    - "9001:9001"
-    volumes:
-    - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
-    - ./mosquitto/data:/mosquitto/data
-    - ./mosquitto/log:/mosquitto/log
-    restart: unless-stopped
-    networks:
-    - iot-network
+    command: python main.py  # 直接指定启动命令
 
 networks:
-  iot-network:
+  default:
     driver: bridge

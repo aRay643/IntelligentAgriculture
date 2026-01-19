@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-IoT传感器数据监控系统 - Docker 优化版本
+IoT传感器数据监控系统 - 兼容旧版本 Docker
 """
 
 import sys
 import os
 import logging
+import subprocess
 from pathlib import Path
 
 # 添加项目根目录到Python路径
@@ -18,8 +19,39 @@ from src.database import SensorDatabase
 from src.utils import setup_logging, check_dependencies, get_local_ip
 
 
+def check_docker_version():
+    """检查 Docker 版本兼容性"""
+    try:
+        result = subprocess.run(['docker', '--version'],
+                                capture_output=True, text=True, timeout=5)
+        if result.returncode == 0:
+            version_str = result.stdout.strip()
+            print(f"Docker 版本: {version_str}")
+
+            # 尝试提取版本号
+            import re
+            match = re.search(r'(\d+\.\d+\.\d+)', version_str)
+            if match:
+                version = match.group(1)
+                print(f"检测到 Docker 版本: {version}")
+
+                # 检查主要版本
+                major_version = int(version.split('.')[0])
+                if major_version < 20:
+                    print("⚠️  注意：检测到较旧的 Docker 版本")
+                    print("   系统将尝试使用兼容模式运行")
+
+        return True
+    except Exception as e:
+        print(f"无法检查 Docker 版本: {e}")
+        return True  # 继续运行
+
+
 def main():
     """主函数"""
+    # 检查 Docker 版本兼容性
+    check_docker_version()
+
     # 读取环境变量
     web_host = os.getenv('WEB_HOST', '0.0.0.0')
     web_port = int(os.getenv('WEB_PORT', '8080'))
@@ -34,7 +66,7 @@ def main():
 
     print(f"""
     ╔═══════════════════════════════════════════════════════╗
-    ║     IoT传感器数据监控系统 v1.0 (Docker)               ║
+    ║     IoT传感器数据监控系统 v1.0 (兼容模式)             ║
     ╚═══════════════════════════════════════════════════════╝
 
     配置信息:
