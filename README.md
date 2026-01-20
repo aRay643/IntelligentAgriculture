@@ -62,3 +62,18 @@ chmod +x fix_deps.sh
 chmod +x solve-mosquitto.sh
 ./solve-mosquitto.sh
 ```
+
+### 三、为Ubuntu系统下的主机开启热点供设备连接
+
+用管理员权限使用脚本wifi-manager.sh
+```bash
+sudo chmod +x wifi-manager.sh
+sudo ./wifi-manager hotspot  #开启热点
+sudo ./wifi-manager status   #查看状态
+sudo ./wifi-manager list    #列出可用wifi
+sudo ./wifi-manager connect "WiFi名称" "密码"   #连接指定wifi
+sudo ./wifi-manager disconnect    #断开连接
+sudo ./wifi-manager restart     #重启服务
+sudo ./wifi-manager help    #查看帮助
+sudo ./wifi-manager client     #切换回客户端模式
+```
