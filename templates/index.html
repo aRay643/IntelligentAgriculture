@@ -22,11 +22,11 @@
         <!-- 1. 顶部固定导航栏 -->
         <nav class="landing-nav glass-effect">
             <div class="nav-brand">
-                <span class="nav-logo">🌸 WHU IoT</span>
+                <span class="nav-logo">🚩 2026武汉大学计算机学院“E乡情”寒假社会实践</span>
             </div>
             <div class="nav-links">
                 <a href="#hero">首页</a>
-                <a href="#about-school">名校风采</a>
+                <a href="#about-school">院校风采</a>
                 <a href="#about-team">实践团队</a>
                 <button class="nav-btn-enter" onclick="enterSystem()">进入系统</button>
             </div>
@@ -34,9 +34,6 @@
 
         <!-- 背景层 (固定不动) -->
         <div class="landing-fixed-bg"></div>
-
-        <!-- 2. 内容滚动区域 -->
-        <!-- ... 上面的导航栏保持不变 ... -->
 
         <!-- 2. 内容滚动区域 -->
         <div class="scroll-content">
@@ -47,10 +44,10 @@
                     <div class="logos-area">
                         <div class="logo-item">🏛️ 武汉大学</div>
                         <div class="divider-vertical"></div>
-                        <div class="logo-item">💻 计算机学院</div>
+                        <div class="logo-item">💻 计算机学院“E乡情”社会实践队</div>
                     </div>
 
-                    <div class="hero-badge">202X年寒假社会实践成果</div>
+                    <div class="hero-badge">2026年寒假社会实践成果</div>
 
                     <h1 class="hero-title">智慧农业 · IoT环境监测系统</h1>
                     <p class="hero-subtitle">
@@ -58,7 +55,6 @@
                         解决传统农业数据采集难、实时性差痛点，助力乡村振兴。
                     </p>
 
-                    <!-- 【修改】移除了原本的大按钮，改为向下滚动的提示 -->
                     <div class="scroll-hint">
                         <p>👇 向下滚动探索团队风采</p>
                         <div class="arrow-down"></div>
@@ -66,24 +62,64 @@
                 </div>
             </section>
 
-            <!-- SECTION 2: 学校与学院介绍 (保持不变) -->
+            <!-- SECTION 2: 学校与学院介绍 -->
             <section id="about-school" class="info-section">
-                <!-- ... 原有代码保持不变 ... -->
                 <div class="section-container">
                      <h2 class="section-title">🏫 珞珈山下的学术殿堂</h2>
+
                      <div class="school-grid">
-                        <!-- 武汉大学卡片 -->
-                        <div class="info-card glass-effect">
-                            <div class="card-icon">🌸</div>
-                            <h3>武汉大学</h3>
-                            <p class="card-desc">"自强、弘毅、求是、拓新"</p>
+
+                        <!-- 卡片 1：武汉大学 -->
+                        <div class="info-card school-card glass-effect">
+                            <!-- 徽标区域 -->
+                            <div class="logo-wrapper">
+                                <!-- 请确保 static/images/whu_logo.png 存在 -->
+                                <img src="{{ url_for('static', filename='logos/whu_logo.png') }}" alt="武汉大学校徽">
+                            </div>
+
+                            <!-- 荣誉标签 -->
+                            <div class="school-badges">
+                                <span class="badge-tag">985工程</span>
+                                <span class="badge-tag">211工程</span>
+                                <span class="badge-tag">双一流建设高校</span>
+                                <span class="badge-tag">教育部直属</span>
+                            </div>
+
+                            <!-- 详细介绍 -->
+                            <p class="school-desc-text">
+                                环绕东湖水，坐拥珞珈山。武汉大学溯源于1893年清末湖广总督张之洞创办的自强学堂，近代中国第一批国立大学。校园环境优美，中西合璧的宫殿式建筑群古朴典雅，被誉为“中国最美丽的大学”之一。
+                            </p>
+
+                            <!-- 校训 -->
+                            <div class="school-motto">自强、弘毅、求是、拓新</div>
                         </div>
-                        <!-- 计算机学院卡片 -->
-                        <div class="info-card glass-effect">
-                            <div class="card-icon">🖥️</div>
-                            <h3>计算机学院</h3>
-                            <p class="card-desc">依托学院物联网实验室技术支持。</p>
+
+                        <!-- 卡片 2：计算机学院 -->
+                        <div class="info-card school-card glass-effect">
+                            <!-- 徽标区域 -->
+                            <div class="logo-wrapper">
+                                <!-- 请确保 static/images/cs_logo.png 存在 -->
+                                <img src="{{ url_for('static', filename='logos/cs_logo.png') }}" alt="计算机学院院徽">
+                            </div>
+
+                            <!-- 荣誉标签 -->
+                            <div class="school-badges">
+                                <span class="badge-tag">拥A+学科</span>
+                                <span class="badge-tag">拥国家特色专业</span>
+                                <span class="badge-tag">卓越工程师计划</span>
+                            </div>
+
+                            <!-- 详细介绍 -->
+                            <p class="school-desc-text">
+                                武汉大学计算机学院是全国最早建立的计算机科学院系之一。学院实力雄厚，拥有多媒体软件工程技术研究中心等国家级科研平台。在人工智能、物联网、软件工程等领域处于国内领先水平，致力于培养复合型高层次人才。
+                            </p>
+
+                            <!-- 实践支持 -->
+                            <div class="school-motto" style="font-size: 0.95rem; color: #a7f3d0;">
+                                依托物联网工程实验室技术支持
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -91,18 +127,65 @@
             <!-- SECTION 3: 【重点修改】团队与风采展示 -->
             <section id="about-team" class="info-section">
                 <div class="section-container wide-container"> <!-- 增加 wide-container 类 -->
-                    <h2 class="section-title">👥 “智慧耕耘”实践团队</h2>
+                    <h2 class="section-title">👥 “E乡情”实践团队</h2>
 
                     <!-- 文字介绍 -->
-                    <div class="team-intro glass-effect" style="margin-bottom: 30px;">
+                    <!-- 文字介绍与分组展示 -->
+                    <div class="team-intro glass-effect">
                         <h3>项目背景与分工</h3>
-                        <p>我们是来自武汉大学计算机学院的社会实践队伍。本项目旨在将计算机视觉与物联网技术应用于田间地头，通过低成本硬件实现环境数据的实时采集与分析。</p>
-                        <ul class="feature-list" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
-                            <li><strong>队长：</strong> XXX (统筹与全栈)</li>
-                            <li><strong>队员：</strong> XXX (嵌入式开发)</li>
-                            <li><strong>队员：</strong> XXX (数据可视化)</li>
-                            <li><strong>队员：</strong> XXX (实地调研)</li>
-                        </ul>
+                        <p class="team-desc">
+                            我们是来自武汉大学计算机学院的社会实践队伍。本项目旨在将计算机视觉与物联网技术应用于田间地头，通过低成本硬件实现环境数据的实时采集与分析。
+                        </p>
+
+                        <!-- 分组信息 Grid 布局 -->
+                        <div class="team-groups-grid">
+
+                            <!-- 技术组 -->
+                            <div class="group-card group-tech">
+                                <h4><span>💻</span> 技术组</h4>
+                                <div class="group-content">
+                                    <div class="role-block">
+                                        <span class="role-title">主负责人</span>
+                                        <strong class="role-name">刘炎轩</strong>
+                                    </div>
+                                    <div class="role-block">
+                                        <span class="role-title">成员</span>
+                                        <span class="member-list">高亦菲, 周可泽, 刘睿, 高锦松</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 宣传组 -->
+                            <div class="group-card group-publicity">
+                                <h4><span>📸</span> 宣传组</h4>
+                                <div class="group-content">
+                                    <div class="role-block">
+                                        <span class="role-title">主负责人</span>
+                                        <strong class="role-name">王依霖</strong>
+                                    </div>
+                                    <div class="role-block">
+                                        <span class="role-title">成员</span>
+                                        <span class="member-list">张一鸣, 苏梓凯, 孙艺蕾, 殷嘉忆</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 宣讲组 -->
+                            <div class="group-card group-presentation">
+                                <h4><span>🎤</span> 宣讲组</h4>
+                                <div class="group-content">
+                                    <div class="role-block">
+                                        <span class="role-title">主负责人</span>
+                                        <strong class="role-name">高一鸣</strong>
+                                    </div>
+                                    <div class="role-block">
+                                        <span class="role-title">成员</span>
+                                        <span class="member-list">董文卓, 马友会, 彭乔茜</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <!-- === 媒体展示区域 === -->
@@ -118,7 +201,6 @@
                                 <div class="card-image-box">
                                     <img src="{{ url_for('static', filename='photos/' + photo) }}" alt="实践照片">
                                 </div>
-                                <div class="caption">实践记录</div>
                             </div>
                             {% endfor %}
 
@@ -129,7 +211,6 @@
                                     <div class="card-image-box">
                                         <img src="{{ url_for('static', filename='photos/' + photo) }}" alt="实践照片">
                                     </div>
-                                    <div class="caption">实践记录</div>
                                 </div>
                                 {% endfor %}
                             {% else %}
@@ -159,22 +240,30 @@
             </section>
                     <!-- === 替换结束 === -->
 
-            <!-- 【新增】SECTION 4: 进入系统入口 (放在最后) -->
+            <!-- SECTION 4: 进入系统入口 -->
             <section id="entry-point" class="full-screen-section" style="min-height: 60vh;">
                 <div class="hero-card glass-effect">
-                    <h2>已了解完毕？</h2>
-                    <p style="margin-bottom: 30px; color: rgba(255,255,255,0.8);">
-                        点击下方按钮，连接至 IoT 监控中心，查看实时环境数据。
+                    <!-- 标题修改：更正式 -->
+                    <h2 style="font-size: 2.2rem; margin-bottom: 20px; letter-spacing: 1px;">
+                        IoT 环境监测数据可视化平台
+                    </h2>
+
+                    <!-- 副标题修改：强调技术实现和功能 -->
+                    <p style="margin-bottom: 40px; color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                        基于物联网与多源传感技术，实现对目标区域的全天候精准感知。<br>
+                        点击下方按钮，即可接入数据中心，查看实时环境指标与分析图表。
                     </p>
+
+                    <!-- 按钮文字微调 -->
                     <button class="main-cta-btn big-pulse" onclick="enterSystem()">
-                        🚀 启动监控中心
+                        🚀 进入监控控制台
                     </button>
                 </div>
             </section>
 
             <!-- 底部版权 -->
             <footer class="landing-footer">
-                <p>&copy; 202X 武汉大学计算机学院社会实践队 | Designed with ❤️</p>
+                <p>&copy; 2026 武汉大学计算机学院“E乡情”社会实践队</p>
             </footer>
         </div>
     </div>
@@ -340,33 +429,49 @@
 
             <!-- API接口信息 -->
             <div class="card">
-                <h2><i>🔌</i> API接口</h2>
+                <h2><i>🔌</i> 开发者接口</h2>
                 <div class="api-info">
-                    <h3>RESTful API端点</h3>
-                    <div class="api-endpoint">
-                        GET /api/devices - 获取所有设备列表
-                    </div>
-                    <div class="api-endpoint">
-                        GET /api/data/latest?device_id={id}&limit={n} - 获取最新数据
-                    </div>
-                        <div class="api-endpoint">
-                            GET /api/data/history?device_id={id}&hours={h} - 获取历史数据
+                    <p style="color: #718096; margin-bottom: 15px; font-size: 0.9rem;">
+                        本系统提供标准的 RESTful API，支持第三方数据接入与二次开发。
+                    </p>
+
+                    <div class="api-list">
+                        <!-- 接口 1 -->
+                        <div class="api-endpoint-item">
+                            <span class="method-badge get">GET</span>
+                            <code class="api-url">/api/devices</code>
+                            <span class="api-desc">获取所有在线设备列表</span>
                         </div>
-                        <div class="api-endpoint">
-                            GET /api/statistics/device/{device_id} - 获取设备统计
+
+                        <!-- 接口 2 -->
+                        <div class="api-endpoint-item">
+                            <span class="method-badge get">GET</span>
+                            <code class="api-url">/api/data/latest?device_id={id}</code>
+                            <span class="api-desc">获取指定设备最新数据</span>
                         </div>
-                        <div class="api-endpoint">
-                            GET /api/system/status - 获取系统状态
+
+                        <!-- 接口 3 -->
+                        <div class="api-endpoint-item">
+                            <span class="method-badge get">GET</span>
+                            <code class="api-url">/api/data/history?device_id={id}</code>
+                            <span class="api-desc">获取设备历史趋势数据</span>
+                        </div>
+
+                         <!-- 接口 4 -->
+                        <div class="api-endpoint-item">
+                            <span class="method-badge get">GET</span>
+                            <code class="api-url">/api/system/status</code>
+                            <span class="api-desc">获取服务器运行状态</span>
                         </div>
                     </div>
+                </div>
             </div>
 
-                <!-- 刷新按钮 -->
-                <button class="refresh-btn" onclick="refreshData()">
-                    🔄 刷新数据
-                </button>
+            <!-- 刷新按钮 -->
+            <button class="refresh-btn" onclick="refreshData()">
+                🔄 刷新数据
+            </button>
         </div>
-    </div>
     </div>
     <!-- End of Dashboard Container -->
 
@@ -396,6 +501,19 @@
                     refreshData();
                 }
             }, 800);
+        }
+
+        function exitSystem() {
+            const landing = document.getElementById('landingPage');
+            const dashboard = document.getElementById('mainDashboard');
+
+            // 1. 仪表盘隐藏
+            dashboard.classList.remove('active');
+
+            // 2. 封面页滑下来（移除 hidden 类）
+            landing.classList.remove('hidden');
+
+            landing.scrollTop = 0;
         }
     </script>
 </body>

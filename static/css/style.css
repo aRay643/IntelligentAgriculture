@@ -102,9 +102,9 @@ body {
 }
 
 .hero-card { text-align: center; padding: 50px; max-width: 800px; width: 100%; }
-.logos-area { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+.logos-area { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; font-size: 1.5rem; color: rgba(255,255,255,0.8); }
 .divider-vertical { width: 1px; background: rgba(255,255,255,0.4); }
-.hero-badge { display: inline-block; background: #48bb78; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 20px; }
+.hero-badge { display: inline-block; background: #48bb78; padding: 5px 15px; border-radius: 20px; font-size: 1.4rem; margin-bottom: 20px; }
 
 .hero-title {
     font-size: 3rem; margin: 0 0 20px 0;
@@ -452,4 +452,379 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* =========================================
+   4. 新增：团队介绍分组样式 (Team Groups)
+   ========================================= */
+
+/* 团队介绍容器微调 */
+.team-intro {
+    margin-bottom: 30px;
+    padding: 30px; /* 增加内边距让内容不拥挤 */
+}
+
+/* 描述文字 */
+.team-desc {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 网格布局容器：电脑端三列，手机端单列 */
+.team-groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* 单个小组卡片基础样式 */
+.group-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid transparent; /* 左侧彩条占位 */
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* 鼠标悬停时的微动效 */
+.group-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* 小组标题 */
+.group-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 图标和文字间距 */
+}
+
+/* 角色块（负责人/成员）间距 */
+.role-block {
+    margin-bottom: 12px;
+}
+
+.role-block:last-child {
+    margin-bottom: 0;
+}
+
+/* "主负责人/成员" 小标题 */
+.role-title {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+/* 负责人名字 */
+.role-name {
+    font-size: 1.1rem;
+    color: white;
+}
+
+/* 成员名单 */
+.member-list {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* --- 各组特定配色 (左边框颜色 + 标题颜色) --- */
+
+/* 技术组 - 青色/科技感 */
+.group-tech {
+    border-color: #4fd1c5;
+}
+.group-tech h4 {
+    color: #4fd1c5;
+}
+
+/* 宣传组 - 橙色/活力感 */
+.group-publicity {
+    border-color: #f6ad55;
+}
+.group-publicity h4 {
+    color: #f6ad55;
+}
+
+/* 宣讲组 - 红色/热情感 */
+.group-presentation {
+    border-color: #fc8181;
+}
+.group-presentation h4 {
+    color: #fc8181;
+}
+
+/* =========================================
+   [新增] 院校风采增强样式
+   ========================================= */
+
+/* 调整 Grid 布局，让卡片更宽一点，方便展示详细内容 */
+.school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 增加最小宽度 */
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* 针对手机端的适配：单列显示 */
+@media (max-width: 768px) {
+    .school-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 院校卡片特定样式 */
+.school-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 内容居中 */
+    text-align: center;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* 保持高度一致 */
+    background: rgba(255, 255, 255, 0.08); /*稍微深一点的背景 */
+}
+
+/* 悬停效果：轻微上浮 + 边框发光 */
+.school-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(72, 187, 120, 0.5);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* 徽标图片容器 */
+/* =========================================
+   修改：无边框大尺寸徽标样式
+   ========================================= */
+
+/* 1. 容器：去除所有背景、边框、圆角，只负责布局 */
+.logo-wrapper {
+    width: 100%;             /* 宽度占满卡片，方便居中 */
+    height: auto;            /* 高度自适应 */
+    min-height: 180px;       /* 预留足够的高度空间，保证对齐 */
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;     /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+
+    background: transparent; /* 透明背景 */
+    border: none;            /* 无边框 */
+    box-shadow: none;        /* 无盒子阴影 */
+    border-radius: 0;        /* 去除圆角 */
+    padding: 0;
+}
+
+/* 2. 图片本身：放大尺寸 + 增加质感 */
+.logo-wrapper img,
+.logo-wrapper svg {
+    height: 160px;           /* 【核心修改】高度从原来的100px左右加大到160px */
+    width: auto;             /* 宽度自动，保持比例不变 */
+    max-width: 90%;          /* 防止过宽超出卡片 */
+    object-fit: contain;
+
+    /* 关键：给 Logo 线条加一层淡淡的白色光晕投影，
+       这比加背景圈看起来更高级，更有“悬浮感” */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 弹性动画 */
+}
+
+/* 3. 悬停交互：Logo 整体放大 + 光晕增强 */
+.school-card:hover .logo-wrapper img,
+.school-card:hover .logo-wrapper svg {
+    transform: scale(1.15);  /* 放大倍数增加 */
+    filter: drop-shadow(0 0 25px rgba(72, 187, 120, 0.8)); /* 悬停时光晕变成主题绿 */
+}
+
+/* 如果之前的 CSS 里有 .school-card:hover .logo-wrapper 的样式，
+   请把背景色/边框变换的代码删掉，或者直接用上面的代码覆盖。 */
+
+.school-card:hover .logo-wrapper {
+    transform: scale(1.1) rotate(5deg); /* 悬停时徽标放大并微转 */
+}
+
+.logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 学校名称 */
+.school-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* 荣誉标签容器 */
+.school-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* 单个标签样式 */
+.badge-tag {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(72, 187, 120, 0.15);
+    color: #68d391;
+    border: 1px solid rgba(72, 187, 120, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* 描述文字 */
+.school-desc-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: justify; /* 两端对齐让文字块更整齐 */
+    text-align-last: center; /* 最后一行居中 */
+}
+
+/* 校训引用 */
+.school-motto {
+    margin-top: 20px;
+    font-style: italic;
+    font-family: "KaiTi", "STKaiti", serif; /* 楷体更有韵味 */
+    color: #f6ad55; /* 橙色高亮 */
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.school-motto::before { content: '“'; margin-right: 5px; }
+.school-motto::after { content: '”'; margin-left: 5px; }
+
+/* =========================================
+   UI 组件美化 (按钮 & 选择器)
+   ========================================= */
+
+/* 1. 返回按钮美化 */
+.back-btn {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    padding: 8px 18px;
+    border-radius: 20px;       /* 胶囊形状 */
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;                  /* 图标和文字间距 */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 轻微阴影 */
+}
+
+.back-btn:hover {
+    color: #48bb78;            /* 悬停变绿 */
+    border-color: #48bb78;
+    box-shadow: 0 4px 10px rgba(72, 187, 120, 0.15);
+    transform: translateX(-3px); /* 微微向左动，暗示返回 */
+}
+
+/* 2. 下拉选择框美化 (时间选择) */
+#timeRange {
+    appearance: none;          /* 去掉浏览器默认丑样式 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    padding: 6px 35px 6px 15px; /* 右侧留空给小箭头 */
+    border-radius: 8px;
+    color: #2d3748;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+
+    /* 自定义一个小箭头背景 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+}
+
+#timeRange:hover {
+    border-color: #cbd5e0;
+    background-color: #fff;
+}
+
+#timeRange:focus {
+    border-color: #48bb78;     /* 选中时边框变绿 */
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+}
+
+/* =========================================
+   API 接口美化样式
+   ========================================= */
+
+.api-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.api-endpoint-item {
+    display: flex;
+    align-items: center;
+    background-color: #f8fafc; /* 极淡的灰蓝色背景 */
+    border: 1px solid #edf2f7;
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.2s;
+    flex-wrap: wrap; /* 手机端自动换行 */
+    gap: 10px;
+}
+
+.api-endpoint-item:hover {
+    border-color: #cbd5e0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    transform: translateX(2px);
+}
+
+/* HTTP 方法标签 (GET) */
+.method-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    min-width: 50px;
+    text-align: center;
+}
+
+.method-badge.get {
+    background-color: #ebf8ff; /* 浅蓝底 */
+    color: #3182ce;            /* 深蓝字 */
+    border: 1px solid #bee3f8;
+}
+
+/* API 路径代码样式 */
+.api-url {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: #d53f8c; /* 骚粉色高亮路径，或者用 #2d3748 深色 */
+    background: rgba(0,0,0,0.03);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-right: auto; /* 把描述文字推到最右边 */
+}
+
+/* 描述文字 */
+.api-desc {
+    color: #718096;
+    font-size: 0.85rem;
 }
