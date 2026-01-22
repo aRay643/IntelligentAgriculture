@@ -18,6 +18,27 @@ from src.database import SensorDatabase
 from src.utils import setup_logging, check_dependencies, get_local_ip
 
 
+def get_all_ips():
+    """获取所有非本地回环IP地址"""
+    import socket
+    ips = []
+    try:
+        # 获取主机名
+        hostname = socket.gethostname()
+
+        # 获取所有IP地址
+        all_ips = socket.getaddrinfo(hostname, None)
+
+        for addr_info in all_ips:
+            ip = addr_info[4][0]
+            if ip != '127.0.0.1' and not ip.startswith('fe80:'):
+                ips.append(ip)
+
+    except Exception as e:
+        print(f"获取IP地址失败: {e}")
+
+    return list(set(ips))  # 去重
+
 def main():
     """主函数"""
     setup_logging()
@@ -25,6 +46,11 @@ def main():
 
     # 记录服务器启动时间
     server_start_time = datetime.now()
+
+    ips = get_all_ips()
+    print("可用的IP地址:")
+    for ip in ips:
+        print(f"  http://{ip}:8080")
 
     print(f"""
     ╔══════════════════════════════════════════╗
@@ -68,6 +94,14 @@ def main():
     }
 
     print(f"""
+    📱 手机访问指南:
+       1. 确保手机和PC连接同一热点
+       2. 在手机浏览器中输入:
+          http://{local_ip}:8080
+
+       如果无法访问，请尝试以下IP:
+       {chr(10).join([f'   http://{ip}:8080' for ip in ips if ip != local_ip])}
+
     📊 系统信息:
        本地IP地址: {local_ip}
        Web端口: {config['port']}

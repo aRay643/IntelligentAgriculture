@@ -83,7 +83,7 @@ class MQTTHandler:
 
             # 检查配置文件内容
             try:
-                with open(config_path, 'r') as f:
+                with open(config_path, 'r', encoding='utf-8') as f: 
                     config_content = f.read()
 
                 # 确保配置文件有基本的监听设置
