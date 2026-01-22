@@ -360,7 +360,7 @@
                 <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <h2><i>📈</i> 温度趋势</h2>
                     <div class="time-selector">
-                        <select id="tempTimeRange" onchange="handleTimeChange('temp')">
+                        <select id="tempTimeRange" class="time-select-btn" onchange="handleTimeChange('temp')">
                             <option value="1">最近 1 小时</option>
                             <option value="4">最近 4 小时</option>
                             <option value="24">最近 1 天</option>
@@ -387,7 +387,7 @@
                 <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                     <h2><i>💧</i> 湿度趋势</h2>
                     <div class="time-selector">
-                        <select id="humTimeRange" onchange="handleTimeChange('hum')">
+                        <select id="humTimeRange" class="time-select-btn" onchange="handleTimeChange('hum')">
                             <option value="1">最近 1 小时</option>
                             <option value="4">最近 4 小时</option>
                             <option value="24">最近 1 天</option>

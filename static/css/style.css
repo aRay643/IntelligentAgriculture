@@ -828,3 +828,85 @@ body {
     color: #718096;
     font-size: 0.85rem;
 }
+/* =========================================
+   新增：时间选择下拉菜单美化
+   ========================================= */
+
+/* 容器微调，让下拉菜单与标题对齐更好 */
+.time-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px; /* 下拉菜单和信息提示之间的间距 */
+}
+
+/* 美化的下拉菜单 */
+.time-select-btn {
+    /* 基本样式与返回按钮一致 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    padding: 8px 35px 8px 15px; /* 右侧留空给箭头 */
+    border-radius: 20px; /* 胶囊形状 */
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+    /* 自定义下拉箭头 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+
+    /* 确保文字不溢出 */
+    min-width: 140px;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 悬停效果 */
+.time-select-btn:hover {
+    color: #48bb78;
+    border-color: #48bb78;
+    box-shadow: 0 4px 10px rgba(72, 187, 120, 0.15);
+    transform: translateY(-1px);
+}
+
+/* 焦点状态 */
+.time-select-btn:focus {
+    outline: none;
+    border-color: #48bb78;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.2);
+}
+
+/* 下拉选项样式 (虽然不能完全自定义，但可以设置一些基本样式) */
+.time-select-btn option {
+    background-color: white;
+    color: #4a5568;
+    padding: 8px 12px;
+}
+
+/* 禁用状态 */
+.time-select-btn:disabled {
+    background-color: #f7fafc;
+    color: #a0aec0;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+}
+
+/* 图表信息提示文字样式 */
+#tempChartInfo, #humChartInfo {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 8px;
+    text-align: right;
+    min-height: 20px; /* 防止高度跳动 */
+}
